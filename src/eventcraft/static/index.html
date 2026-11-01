@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EventCraft AI - GenAI-powered Planning Assistant</title>
+  <meta name="description" content="GenAI-powered planning assistant that helps users organize weddings, birthdays, and community events with budgets, timelines, vendor checklists, and personalized ideas.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="container">
+    <header>
+      <h1>EventCraft AI</h1>
+      <p class="subtitle">GenAI-powered planning assistant that helps users organize weddings, birthdays, and community events with budgets, timelines, vendor checklists, and personalized ideas.</p>
+    </header>
+
+    <div class="sample-bar" role="region" aria-label="Sample briefs">
+      <strong>Try a sample brief:</strong>
+      <div class="sample-buttons">
+        <button type="button" id="sample-btn-wedding" class="btn btn-secondary">Wedding Sample (Punjabi Sangeet)</button>
+        <button type="button" id="sample-btn-birthday" class="btn btn-secondary">Birthday Sample (Retro Arcade Neon)</button>
+        <button type="button" id="sample-btn-community" class="btn btn-secondary">Community Sample (Solar Green Festival)</button>
+      </div>
+    </div>
+
+    <main id="main-content">
+      <div id="form-error-summary" class="error-summary" role="alert" aria-labelledby="error-summary-title" tabindex="-1" hidden>
+        <h2 id="error-summary-title">There is a problem</h2>
+        <ul></ul>
+      </div>
+
+      <form id="brief-form" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="event_type">Event Type</label>
+            <select id="event_type" name="event_type">
+              <option value="wedding">Wedding</option>
+              <option value="birthday">Birthday</option>
+              <option value="community">Community Event</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="event_date">Event Date</label>
+            <span id="hint-event-date" class="hint-text">Select a future date up to 3 years ahead</span>
+            <input type="date" id="event_date" name="event_date" required aria-describedby="hint-event-date">
+          </div>
+
+          <div class="form-group">
+            <label for="guest_count">Guest Count</label>
+            <span id="hint-guest-count" class="hint-text">Estimated headcount (1 - 10,000)</span>
+            <input type="number" id="guest_count" name="guest_count" min="1" max="10000" value="100" required aria-describedby="hint-guest-count">
+          </div>
+
+          <div class="form-group">
+            <label for="budget_total">Budget Total</label>
+            <span id="hint-budget-total" class="hint-text">Total allocated funds</span>
+            <input type="number" id="budget_total" name="budget_total" step="0.01" min="1" value="10000.00" required aria-describedby="hint-budget-total">
+          </div>
+
+          <div class="form-group">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency">
+              <option value="INR">INR (₹)</option>
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="culture_or_tradition">Culture / Tradition / Subtype</label>
+            <span id="hint-culture" class="hint-text">e.g. North Indian Punjabi, Kids 5th, Clean-up Drive</span>
+            <input type="text" id="culture_or_tradition" name="culture_or_tradition" aria-describedby="hint-culture">
+          </div>
+
+          <div class="form-group">
+            <label for="style">Style / Aesthetic</label>
+            <span id="hint-style" class="hint-text">e.g. Royal Regal Elegance, Retro Arcade, Eco-Friendly</span>
+            <input type="text" id="style" name="style" aria-describedby="hint-style">
+          </div>
+
+          <div class="form-group">
+            <label for="priorities">Key Priorities</label>
+            <span id="hint-priorities" class="hint-text">Comma-separated (e.g. Catering, Photography)</span>
+            <input type="text" id="priorities" name="priorities" aria-describedby="hint-priorities">
+          </div>
+
+          <div class="form-group">
+            <label for="dietary_needs">Dietary Needs</label>
+            <span id="hint-dietary" class="hint-text">Comma-separated (e.g. Vegetarian, Nut-free)</span>
+            <input type="text" id="dietary_needs" name="dietary_needs" aria-describedby="hint-dietary">
+          </div>
+
+          <div class="form-group">
+            <label for="accessibility_needs">Accessibility Needs</label>
+            <span id="hint-accessibility" class="hint-text">Comma-separated (e.g. Step-free ramp, Quiet corner)</span>
+            <input type="text" id="accessibility_needs" name="accessibility_needs" aria-describedby="hint-accessibility">
+          </div>
+
+          <div class="form-group">
+            <label for="interests">Interests &amp; Vibes</label>
+            <span id="hint-interests" class="hint-text">Comma-separated (e.g. Live music, Trivia, Farm stalls)</span>
+            <input type="text" id="interests" name="interests" aria-describedby="hint-interests">
+          </div>
+
+          <div class="form-group form-group-full">
+            <label for="steer">Personalized Ideas Steer (Optional)</label>
+            <span id="hint-steer" class="hint-text">Specific guidance or thematic twist to personalize ideas</span>
+            <textarea id="steer" name="steer" rows="2" aria-describedby="hint-steer"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" id="generate-plan-btn" class="btn btn-primary">Generate Event Plan</button>
+      </form>
+
+      <nav id="deliverables-nav" class="in-page-nav" aria-label="Deliverables navigation" hidden>
+        <ul>
+          <li><a href="#budget-section">Budget</a></li>
+          <li><a href="#timeline-section">Timeline</a></li>
+          <li><a href="#vendors-section">Vendor checklist</a></li>
+          <li><a href="#ideas-section">Personalized ideas</a></li>
+          <li><a href="#assistant-section">Ask the assistant</a></li>
+        </ul>
+      </nav>
+
+      <div id="deliverables-container" hidden>
+        <div class="disclaimer-banner" role="note">
+          <p><strong>Planning estimates disclaimer:</strong> All figures and dates are planning estimates, not guaranteed commercial quotes.</p>
+        </div>
+
+        <section id="budget-section" aria-labelledby="budget-heading" tabindex="-1">
+          <h2 id="budget-heading">Budget</h2>
+          <div id="budget-content"></div>
+
+          <form id="rebalance-form" class="rebalance-subform" aria-label="Rebalance budget">
+            <div class="form-group">
+              <label for="rebalance_total">New Total</label>
+              <input type="number" id="rebalance_total" name="rebalance_total" step="0.01">
+            </div>
+            <div class="form-group">
+              <label for="rebalance_guests">Guests</label>
+              <input type="number" id="rebalance_guests" name="rebalance_guests" min="1" max="10000">
+            </div>
+            <div class="form-group">
+              <label for="rebalance_contingency">Contingency %</label>
+              <input type="number" id="rebalance_contingency" name="rebalance_contingency" min="3" max="15" step="0.5" value="5.0">
+            </div>
+            <button type="submit" class="btn btn-secondary">Rebalance Budget (Zero AI calls)</button>
+          </form>
+        </section>
+
+        <section id="timeline-section" aria-labelledby="timeline-heading" tabindex="-1">
+          <h2 id="timeline-heading">Timeline</h2>
+          <div id="timeline-content"></div>
+        </section>
+
+        <section id="vendors-section" aria-labelledby="vendors-heading" tabindex="-1">
+          <h2 id="vendors-heading">Vendor checklist</h2>
+          <div id="vendors-content"></div>
+        </section>
+
+        <section id="ideas-section" aria-labelledby="ideas-heading" tabindex="-1">
+          <h2 id="ideas-heading">Personalized ideas</h2>
+          <div id="ideas-content"></div>
+
+          <form id="steer-form" class="steer-subform" aria-label="Refine personalized ideas">
+            <div class="form-group form-group-full">
+              <label for="steer_input">Steering Direction</label>
+              <input type="text" id="steer_input" name="steer_input" placeholder="e.g. Emphasize sustainable outdoor materials">
+            </div>
+            <button type="submit" class="btn btn-secondary">Regenerate Ideas with Steer</button>
+          </form>
+        </section>
+
+        <section id="assistant-section" aria-labelledby="assistant-heading" tabindex="-1">
+          <div class="assistant-header-wrap">
+            <h2 id="assistant-heading">Ask the assistant</h2>
+            <p class="section-desc">Get tailored logistical advice, vendor guidance, or budget clarification grounded in your active plan.</p>
+          </div>
+
+          <!-- Suggested Example Question Chips -->
+          <div class="assistant-chips-group" role="group" aria-labelledby="chips-label">
+            <span id="chips-label" class="chips-label">Suggested questions:</span>
+            <div class="chips-bar">
+              <button type="button" class="chip-btn" data-question="What should I book first?">What should I book first?</button>
+              <button type="button" class="chip-btn" data-question="Where can I save money?">Where can I save money?</button>
+              <button type="button" class="chip-btn" data-question="What are the key vendor red flags?">What are the key vendor red flags?</button>
+            </div>
+          </div>
+
+          <!-- Question Form -->
+          <form id="assistant-form" class="assistant-form" novalidate>
+            <label for="assistant-question" class="assistant-label">
+              Ask a question grounded in your plan
+              <span class="label-instruction">Press Enter to submit, Shift+Enter for a new line</span>
+            </label>
+            <div class="assistant-input-row">
+              <textarea
+                id="assistant-question"
+                name="assistant-question"
+                rows="2"
+                class="assistant-textarea"
+                placeholder="e.g. What should I book first? Or where can I save money?"
+                required
+              ></textarea>
+              <button type="submit" id="assistant-submit-btn" class="btn btn-primary assistant-submit-btn">
+                Ask Assistant
+              </button>
+            </div>
+          </form>
+
+          <!-- Thinking / Status Live Region -->
+          <div id="assistant-status" class="assistant-status" role="status" aria-live="polite"></div>
+
+          <!-- Answer Log: Hidden initially until first answer exists, not focusable -->
+          <div id="chat-log" class="chat-log" role="log" aria-live="polite" hidden></div>
+        </section>
+      </div>
+    </main>
+
+    <div id="loading-indicator" class="loading-overlay" role="status" aria-live="polite" hidden>
+      <div class="spinner" aria-hidden="true"></div>
+      <span class="loading-text">Generating your event plan...</span>
+    </div>
+
+    <div id="status-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <div id="assertive-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+
+    <footer>
+      <p>EventCraft AI - Built with clean semantic web standards, high accessibility (WCAG 2.2 AA), and zero third-party client dependencies.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

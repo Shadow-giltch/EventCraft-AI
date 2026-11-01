@@ -1,0 +1,257 @@
+{
+  "event_type": "wedding",
+  "budget_categories": [
+    {
+      "name": "Venue & Rentals",
+      "default_percent": 30.0,
+      "min_percent": 15.0,
+      "max_percent": 45.0,
+      "rationale": "Ceremony and reception space, chairs, tables, and setup fees.",
+      "saving_tip": "Consider non-Saturday dates or off-peak seasons for reduced venue hire rates."
+    },
+    {
+      "name": "Catering & Bar",
+      "default_percent": 28.0,
+      "min_percent": 15.0,
+      "max_percent": 45.0,
+      "rationale": "Meals, appetizers, service staff, bar service, and tableware.",
+      "saving_tip": "Opt for buffet or family-style service rather than individual plated dinners."
+    },
+    {
+      "name": "Photography & Video",
+      "default_percent": 12.0,
+      "min_percent": 6.0,
+      "max_percent": 20.0,
+      "rationale": "Full-day photo and video documentation of key ceremony and reception rituals.",
+      "saving_tip": "Book 6 to 8 hours of coverage rather than full 12-hour packages."
+    },
+    {
+      "name": "Decor & Florals",
+      "default_percent": 10.0,
+      "min_percent": 4.0,
+      "max_percent": 20.0,
+      "rationale": "Ceremony backdrop, table centerpieces, entryway arrangements, and lighting.",
+      "saving_tip": "Repurpose ceremony floral arrangements as reception table centerpieces."
+    },
+    {
+      "name": "Music & Entertainment",
+      "default_percent": 7.0,
+      "min_percent": 3.0,
+      "max_percent": 15.0,
+      "rationale": "DJ or live musicians for processional, dinner ambiance, and dance party.",
+      "saving_tip": "Hire a solo acoustic artist for ceremony and a high-energy DJ for the reception."
+    },
+    {
+      "name": "Attire & Beauty",
+      "default_percent": 5.0,
+      "min_percent": 2.0,
+      "max_percent": 12.0,
+      "rationale": "Wedding outfits, hair styling, makeup artist, and alterations.",
+      "saving_tip": "Explore designer rental collections or trunk sales for ceremony attire."
+    },
+    {
+      "name": "Invitations & Stationery",
+      "default_percent": 3.0,
+      "min_percent": 1.0,
+      "max_percent": 8.0,
+      "rationale": "Save-the-dates, formal invitations, menus, and program cards.",
+      "saving_tip": "Send digital save-the-dates and print only reception paper goods."
+    }
+  ],
+  "milestones": [
+    {
+      "id": "m_wed_venue",
+      "title": "Secure Ceremony & Reception Venue",
+      "phase": "Concept & Venue",
+      "lead_days": 270,
+      "priority": "high",
+      "depends_on": [],
+      "notes": "Confirm capacity, sound curfew, and outside catering allowances."
+    },
+    {
+      "id": "m_wed_caterer",
+      "title": "Book Caterer and Taste Menu",
+      "phase": "Vendor Selection",
+      "lead_days": 210,
+      "priority": "high",
+      "depends_on": ["m_wed_venue"],
+      "notes": "Verify dietary restrictions and tasting schedule."
+    },
+    {
+      "id": "m_wed_photo",
+      "title": "Hire Photographer & Videographer",
+      "phase": "Vendor Selection",
+      "lead_days": 180,
+      "priority": "high",
+      "depends_on": ["m_wed_venue"],
+      "notes": "Review portfolio albums and verify backup equipment policies."
+    },
+    {
+      "id": "m_wed_decor",
+      "title": "Finalize Decor Theme & Florist",
+      "phase": "Design & Logistics",
+      "lead_days": 120,
+      "priority": "medium",
+      "depends_on": ["m_wed_venue"],
+      "notes": "Order seasonal blooms and review mockup sample centerpiece."
+    },
+    {
+      "id": "m_wed_invites",
+      "title": "Mail Wedding Invitations & Track RSVPs",
+      "phase": "Invitations & Logistics",
+      "lead_days": 60,
+      "priority": "high",
+      "depends_on": ["m_wed_caterer"],
+      "notes": "Include dietary questionnaire and deadline for headcounts."
+    },
+    {
+      "id": "m_wed_rehearsal",
+      "title": "Conduct Ceremony Rehearsal",
+      "phase": "Final Preparations",
+      "lead_days": 2,
+      "priority": "medium",
+      "depends_on": ["m_wed_venue", "m_wed_invites"],
+      "notes": "Walk through processional order with wedding party and officiant."
+    }
+  ],
+  "run_of_show": [
+    {
+      "time": "10:00",
+      "activity": "Hair & Makeup Artists Arrive",
+      "responsible": "Lead Stylist",
+      "notes": "Set up stations with natural lighting."
+    },
+    {
+      "time": "13:00",
+      "activity": "Photographer Arrives for First Look & Family Photos",
+      "responsible": "Lead Photographer",
+      "notes": "Follow shot list for wedding party portraits."
+    },
+    {
+      "time": "15:30",
+      "activity": "Guests Arrive and Welcome Drinks Served",
+      "responsible": "Venue Coordinator",
+      "notes": "Ensure accessibility ramp is open and clear."
+    },
+    {
+      "time": "16:00",
+      "activity": "Ceremony Begins",
+      "responsible": "Officiant",
+      "notes": "Acoustic processional and ritual vows."
+    },
+    {
+      "time": "17:00",
+      "activity": "Cocktail Hour & Hors d'Oeuvres",
+      "responsible": "Catering Lead",
+      "notes": "Music switches to celebratory playlist."
+    },
+    {
+      "time": "18:30",
+      "activity": "Grand Entrance & Seated Dinner",
+      "responsible": "DJ & Banquet Captain",
+      "notes": "Speeches scheduled between courses."
+    },
+    {
+      "time": "20:30",
+      "activity": "First Dance & Open Dance Floor",
+      "responsible": "DJ",
+      "notes": "Dessert station and coffee bar open."
+    },
+    {
+      "time": "23:00",
+      "activity": "Formal Send-off & Wrap-up",
+      "responsible": "Wedding Planner",
+      "notes": "Confirm guest transport and gift security."
+    }
+  ],
+  "vendor_categories": [
+    {
+      "id": "v_wed_venue",
+      "category": "Venue",
+      "title": "Ceremony & Reception Venue",
+      "budget_line": "Venue & Rentals",
+      "milestone_id": "m_wed_venue",
+      "questions_to_ask": [
+        "What is the exact maximum guest capacity for seated dining?",
+        "Are there noise curfews or amplified music limitations?",
+        "What is the cancellation and inclement weather backup policy?"
+      ],
+      "documents_to_verify": [
+        "Commercial liability insurance certificate",
+        "Itemized facility contract and security deposit schedule",
+        "Alcohol and sound permits"
+      ],
+      "red_flags": [
+        "Refusal to provide written itemization of hidden cleaning or service fees",
+        "No clear backup space for outdoor ceremony areas",
+        "Lack of designated commercial catering prep area"
+      ]
+    },
+    {
+      "id": "v_wed_caterer",
+      "category": "Catering",
+      "title": "Catering & Beverage Provider",
+      "budget_line": "Catering & Bar",
+      "milestone_id": "m_wed_caterer",
+      "questions_to_ask": [
+        "Can you accommodate specific dietary, religious, and allergy requirements?",
+        "What is your ratio of servers and bartenders per guest count?",
+        "Is food prepared on-site or transported from a commissary kitchen?"
+      ],
+      "documents_to_verify": [
+        "Food hygiene and handler certifications",
+        "Liquor license and liquor liability insurance",
+        "Full tasting agreement with dish specifications"
+      ],
+      "red_flags": [
+        "Unwillingness to conduct a pre-event menu tasting",
+        "Vague answers regarding handling surplus food and cleanup duties",
+        "No certified bartenders on staff"
+      ]
+    },
+    {
+      "id": "v_wed_photographer",
+      "category": "Photography",
+      "title": "Lead Photographer & Videographer",
+      "budget_line": "Photography & Video",
+      "milestone_id": "m_wed_photo",
+      "questions_to_ask": [
+        "Have you worked at our venue or similar lighting conditions before?",
+        "What is your backup plan if the primary shooter falls ill on event day?",
+        "What is the exact turnaround time and delivery format for final galleries?"
+      ],
+      "documents_to_verify": [
+        "Professional indemnity and equipment insurance",
+        "Standard photography service agreement with rights of use",
+        "Sample complete full-day wedding gallery (not just portfolio highlights)"
+      ],
+      "red_flags": [
+        "Contract does not guarantee the specific lead photographer you interviewed",
+        "No dual-card backup cameras during shooting",
+        "Turnaround times exceeding 12 weeks without justification"
+      ]
+    },
+    {
+      "id": "v_wed_decor",
+      "category": "Decor",
+      "title": "Florist & Decor Designer",
+      "budget_line": "Decor & Florals",
+      "milestone_id": "m_wed_decor",
+      "questions_to_ask": [
+        "Do you handle setup, teardown, and end-of-night disposal?",
+        "What seasonal bloom substitutions do you propose if shortages occur?",
+        "Can you provide digital design mockups or sample centerpiece boards?"
+      ],
+      "documents_to_verify": [
+        "Itemized floral recipe and rental inventory manifest",
+        "Liability insurance for venue rigging and candle usage",
+        "Teardown schedule agreement"
+      ],
+      "red_flags": [
+        "No late-night teardown crew included, leaving cleanup to client",
+        "Inflexible on floral substitutions",
+        "Demands full cash payment upfront without written milestones"
+      ]
+    }
+  ]
+}

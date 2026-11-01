@@ -1,0 +1,14 @@
+{
+  "event_type": "community",
+  "event_date": "2027-06-20",
+  "guest_count": 350,
+  "budget_total": "7500.00",
+  "currency": "EUR",
+  "culture_or_tradition": "Neighborhood Solar Green Festival",
+  "style": "Eco-Friendly Outdoor Gathering",
+  "priorities": ["Permits, Safety & City Fees", "Sanitation & Waste Management", "Sound, Stage & Power"],
+  "dietary_needs": ["Vegan street food", "Allergen-labeled items"],
+  "accessibility_needs": ["Wheelchair ramp to stage", "Braille wayfinding maps", "Sign language interpreter"],
+  "interests": ["Grassroots acoustic music", "Upcycling workshops", "Local grower farm stalls"],
+  "steer": "Zero-waste composting and native tree planting focus"
+}

@@ -1,0 +1,216 @@
+{
+  "event_type": "community",
+  "budget_categories": [
+    {
+      "name": "Permits, Safety & City Fees",
+      "default_percent": 18.0,
+      "min_percent": 8.0,
+      "max_percent": 30.0,
+      "rationale": "Municipal park/street permits, traffic management, event insurance, and first-aid medics.",
+      "saving_tip": "Partner with local civic organizations or municipal departments for fee waivers."
+    },
+    {
+      "name": "Sound, Stage & Power",
+      "default_percent": 24.0,
+      "min_percent": 10.0,
+      "max_percent": 40.0,
+      "rationale": "Stage platform, sound PA system, wireless microphones, technician, and portable generator.",
+      "saving_tip": "Borrow municipal or local school portable PA gear if permitted."
+    },
+    {
+      "name": "Sanitation & Waste Management",
+      "default_percent": 15.0,
+      "min_percent": 6.0,
+      "max_percent": 25.0,
+      "rationale": "Portable restrooms, handwashing stations, recycling bins, and post-event cleanup crew.",
+      "saving_tip": "Organize a volunteer green squad to sort compost and recyclables during the event."
+    },
+    {
+      "name": "Refreshments & Water Hubs",
+      "default_percent": 20.0,
+      "min_percent": 8.0,
+      "max_percent": 35.0,
+      "rationale": "Free water refill stations, healthy snacks, volunteer meal vouchers, and fruit.",
+      "saving_tip": "Invite independent local food trucks who pay a vendor booth fee to attend."
+    },
+    {
+      "name": "Signage, Marketing & Volunteer Kit",
+      "default_percent": 13.0,
+      "min_percent": 5.0,
+      "max_percent": 22.0,
+      "rationale": "Large wayfinding banners, accessible maps, volunteer high-vis vests, and promotional flyers.",
+      "saving_tip": "Use reusable chalkboard and weather-resistant whiteboard A-frame directional signs."
+    },
+    {
+      "name": "Activity Supplies & Workshop Materials",
+      "default_percent": 10.0,
+      "min_percent": 3.0,
+      "max_percent": 20.0,
+      "rationale": "Sports gear, arts and crafts supplies, workshop tool kits, or educational materials.",
+      "saving_tip": "Run a neighborhood donation drive for reusable tools, balls, and art supplies."
+    }
+  ],
+  "milestones": [
+    {
+      "id": "m_comm_permit",
+      "title": "Submit Municipal Permits & Insurance Application",
+      "phase": "City Approvals",
+      "lead_days": 90,
+      "priority": "high",
+      "depends_on": [],
+      "notes": "File park/street closure notice, noise variance, and public liability certificate."
+    },
+    {
+      "id": "m_comm_safety",
+      "title": "Finalize Health & Safety and Waste Logistics Plan",
+      "phase": "Operations Setup",
+      "lead_days": 60,
+      "priority": "high",
+      "depends_on": ["m_comm_permit"],
+      "notes": "Book portable toilets, first aid station team, and waste disposal bins."
+    },
+    {
+      "id": "m_comm_volunteers",
+      "title": "Recruit & Assign Community Volunteers",
+      "phase": "Volunteers & Outreach",
+      "lead_days": 40,
+      "priority": "medium",
+      "depends_on": ["m_comm_permit"],
+      "notes": "Assign team leads for setup, greeting, accessibility assistance, and clean-up."
+    },
+    {
+      "id": "m_comm_av",
+      "title": "Confirm Sound, Stage & Electric Hookups",
+      "phase": "Technical Logistics",
+      "lead_days": 30,
+      "priority": "high",
+      "depends_on": ["m_comm_permit"],
+      "notes": "Coordinate generator safety clearances and speaker positioning."
+    },
+    {
+      "id": "m_comm_briefing",
+      "title": "Host On-Site Volunteer Walkthrough",
+      "phase": "Final Preparations",
+      "lead_days": 2,
+      "priority": "medium",
+      "depends_on": ["m_comm_volunteers", "m_comm_safety"],
+      "notes": "Distribute emergency contacts, safety vests, and two-way radios."
+    }
+  ],
+  "run_of_show": [
+    {
+      "time": "07:30",
+      "activity": "Production & Safety Teams Arrive",
+      "responsible": "Logistics Lead",
+      "notes": "Open gates, position portable restrooms and sanitation stations."
+    },
+    {
+      "time": "08:30",
+      "activity": "Sound and Stage Setup & Sound Check",
+      "responsible": "AV Technician",
+      "notes": "Check microphone levels and cable covers for wheelchair access."
+    },
+    {
+      "time": "09:15",
+      "activity": "Volunteer Team Briefing & Kit Distribution",
+      "responsible": "Volunteer Coordinator",
+      "notes": "Issue vests, badges, two-way radios, and station assignments."
+    },
+    {
+      "time": "10:00",
+      "activity": "Public Gates Open & Welcome Remarks",
+      "responsible": "Community Host",
+      "notes": "Announce first aid location, restrooms, and schedule of activities."
+    },
+    {
+      "time": "11:00",
+      "activity": "Interactive Workshops & Demonstrations Open",
+      "responsible": "Activity Leads",
+      "notes": "Facilitate multi-generational participation."
+    },
+    {
+      "time": "14:00",
+      "activity": "Community Showcase / Musical Performance",
+      "responsible": "Stage Manager",
+      "notes": "Spotlight local grassroots organizations and talent."
+    },
+    {
+      "time": "16:00",
+      "activity": "Closing Ceremony & Community Thank-You",
+      "responsible": "Community Host",
+      "notes": "Acknowledge volunteers, partners, and neighborhood sponsors."
+    },
+    {
+      "time": "16:30",
+      "activity": "Site Teardown & Green Clean-Up Sweep",
+      "responsible": "Volunteer Green Team",
+      "notes": "Litter sweep, recycle sorting, return site in pristine condition."
+    }
+  ],
+  "vendor_categories": [
+    {
+      "id": "v_comm_permits",
+      "category": "Permits & Safety",
+      "title": "Municipal Authority & First Aid Agency",
+      "budget_line": "Permits, Safety & City Fees",
+      "milestone_id": "m_comm_permit",
+      "questions_to_ask": [
+        "What are the mandatory public liability limits required for this outdoor assembly?",
+        "Are certified emergency first responders legally required on site for our expected attendance?",
+        "What is the submission deadline for sound amplification variances?"
+      ],
+      "documents_to_verify": [
+        "Approved municipal special event permit",
+        "Public liability insurance certificate naming city as additional insured",
+        "Medical responder dispatch agreement"
+      ],
+      "red_flags": [
+        "Operating without written permits from city department",
+        "Inadequate egress routes for emergency medical vehicles",
+        "Missing certificate of insurance"
+      ]
+    },
+    {
+      "id": "v_comm_stage",
+      "category": "Sound & Stage",
+      "title": "Audio Visual & Staging Provider",
+      "budget_line": "Sound, Stage & Power",
+      "milestone_id": "m_comm_av",
+      "questions_to_ask": [
+        "Do you provide rubber cable ramps to prevent tripping hazards across walkways?",
+        "Are your generators rated for low-noise emissions in public park spaces?",
+        "Is an on-site audio engineer present throughout the entire operating window?"
+      ],
+      "documents_to_verify": [
+        "Electrical safety inspection sticker / certification",
+        "Equipment rental manifest with rain cover protections"
+      ],
+      "red_flags": [
+        "Uncovered cables stretching across pedestrian or accessible paths",
+        "No waterproof covers for outdoor electrical gear",
+        "Non-stabilized stage risers"
+      ]
+    },
+    {
+      "id": "v_comm_waste",
+      "category": "Waste & Sanitation",
+      "title": "Sanitation & Recycling Service",
+      "budget_line": "Sanitation & Waste Management",
+      "milestone_id": "m_comm_safety",
+      "questions_to_ask": [
+        "How many ADA-compliant wheelchair accessible portable toilets are included?",
+        "What is the schedule for pumping and servicing during multi-hour operations?",
+        "Do you provide dedicated sorting bins for compost, recycling, and landfill?"
+      ],
+      "documents_to_verify": [
+        "Sanitation service agreement with delivery and pickup timelines",
+        "Waste disposal and recycling compliance certification"
+      ],
+      "red_flags": [
+        "No wheelchair-accessible units provided",
+        "Delivery scheduled during public arrival rather than prior to gates opening",
+        "Failure to include handwashing or sanitizing stations"
+      ]
+    }
+  ]
+}

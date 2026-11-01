@@ -1,0 +1,14 @@
+{
+  "event_type": "wedding",
+  "event_date": "2027-04-18",
+  "guest_count": 220,
+  "budget_total": "1800000.00",
+  "currency": "INR",
+  "culture_or_tradition": "North Indian Punjabi Wedding",
+  "style": "Royal Regal Elegance with Evening Sangeet",
+  "priorities": ["Catering & Bar", "Photography & Video", "Decor & Florals"],
+  "dietary_needs": ["Vegetarian options", "Nut-free desserts"],
+  "accessibility_needs": ["Step-free ramp access", "Elderly seating lounge"],
+  "interests": ["Bhangra beats", "Live regional cooking counters", "Candid documentary photography"],
+  "steer": "Warm ambient lighting with indigenous botanical table runners"
+}

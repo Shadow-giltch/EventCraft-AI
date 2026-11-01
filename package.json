@@ -1,0 +1,17 @@
+{
+  "name": "eventcraft",
+  "version": "1.0.0",
+  "description": "EventCraft AI - GenAI-powered planning assistant",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node scripts/build_public.js && node --test src/eventcraft/static/js/__tests__/*.test.js",
+    "test": "node --test src/eventcraft/static/js/__tests__/*.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0"
+  }
+}

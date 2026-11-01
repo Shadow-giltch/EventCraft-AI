@@ -1,0 +1,14 @@
+{
+  "event_type": "birthday",
+  "event_date": "2027-02-14",
+  "guest_count": 45,
+  "budget_total": "2500.00",
+  "currency": "USD",
+  "culture_or_tradition": "Global Milestone Birthday",
+  "style": "Retro Arcade Neon Night",
+  "priorities": ["Entertainment & Activities", "Food & Beverage"],
+  "dietary_needs": ["Gluten-free cake", "Dairy-free options"],
+  "accessibility_needs": ["Low-sensory quiet corner"],
+  "interests": ["80s synth music", "Trivia competition", "Custom photo strips"],
+  "steer": "Retro arcade aesthetics with interactive trivia"
+}

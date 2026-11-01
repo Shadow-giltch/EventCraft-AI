@@ -1,0 +1,134 @@
+[build-system]
+requires = ["setuptools>=68.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eventcraft"
+version = "1.0.0"
+description = "GenAI-powered planning assistant that helps users organize weddings, birthdays, and community events with budgets, timelines, vendor checklists, and personalized ideas."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "EventCraft AI Contributors"}]
+dependencies = [
+    "fastapi~=0.110.0",
+    "uvicorn[standard]~=0.28.0",
+    "pydantic~=2.6.0",
+    "pydantic-settings~=2.2.0",
+    "httpx~=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest~=8.0.0",
+    "pytest-asyncio~=0.23.0",
+    "pytest-cov~=4.1.0",
+    "hypothesis~=6.98.0",
+    "beautifulsoup4~=4.12.0",
+    "ruff~=0.17.0",
+    "mypy~=2.4.0",
+    "bandit~=1.7.8",
+    "pip-audit~=2.7.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "B",
+    "UP",
+    "SIM",
+    "C4",
+    "C90",
+    "S",
+    "PL",
+    "RUF",
+    "ANN",
+    "D",
+    "T20",
+    "ERA",
+    "PT",
+]
+ignore = [
+    "D107",  # Missing docstring in __init__ (covered in class docstring)
+    "ANN401", # Dynamically typed expressions (typing.Any)
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 8
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Justified: tests use standard pytest asserts, helper mocks, test-specific constants, and omit repetitive test docstrings
+"tests/*" = [
+    "S101",    # Use of assert detected
+    "D100",    # Missing docstring in public module
+    "D101",    # Missing docstring in public class
+    "D102",    # Missing docstring in public method
+    "D103",    # Missing docstring in public function
+    "D104",    # Missing docstring in public package
+    "ANN001",  # Missing type annotation for function argument
+    "ANN201",  # Missing return type annotation for public function
+    "ANN202",  # Missing return type annotation for private function
+    "PLR2004", # Magic value used in comparison
+    "S105",    # Possible hardcoded password (test fake keys)
+    "S106",    # Possible hardcoded password func call
+    "E501",    # Line too long in test setup/assertions
+    "E741",    # Ambiguous variable name in test comprehensions
+    "PLC0415", # Local import in test helper
+]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+mypy_path = "src"
+explicit_package_bases = true
+warn_unused_configs = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_reexport = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-q --cov=eventcraft --cov-branch --cov-report=term-missing --cov-fail-under=95"
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.coverage.run]
+source = ["eventcraft"]
+branch = true
+omit = ["src/eventcraft/__main__.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 95
+exclude_also = [
+    "^\\s*\\.\\.\\.\\s*$",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]

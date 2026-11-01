@@ -1,0 +1,192 @@
+{
+  "event_type": "birthday",
+  "budget_categories": [
+    {
+      "name": "Venue & Space Rental",
+      "default_percent": 25.0,
+      "min_percent": 10.0,
+      "max_percent": 45.0,
+      "rationale": "Party room, backyard tent, or event hall reservation fees.",
+      "saving_tip": "Host at a community park or residential clubhouse with low reservation costs."
+    },
+    {
+      "name": "Food & Beverage",
+      "default_percent": 30.0,
+      "min_percent": 15.0,
+      "max_percent": 50.0,
+      "rationale": "Catering platters, snacks, beverages, and specialty birthday cake.",
+      "saving_tip": "Schedule party between 14:00 and 17:00 to serve appetizers and cake rather than full meals."
+    },
+    {
+      "name": "Entertainment & Activities",
+      "default_percent": 20.0,
+      "min_percent": 8.0,
+      "max_percent": 35.0,
+      "rationale": "Live performer, DJ, game host, photo booth, or activity instructor.",
+      "saving_tip": "Hire a student entertainer or organize DIY interactive group games with prizes."
+    },
+    {
+      "name": "Decorations & Theme Props",
+      "default_percent": 12.0,
+      "min_percent": 5.0,
+      "max_percent": 25.0,
+      "rationale": "Balloons, thematic banners, tableware, photo backdrop, and lighting.",
+      "saving_tip": "Focus on one high-impact focal photo wall rather than scattering decor everywhere."
+    },
+    {
+      "name": "Party Favors & Keepsakes",
+      "default_percent": 8.0,
+      "min_percent": 3.0,
+      "max_percent": 15.0,
+      "rationale": "Themed take-home gifts and custom souvenir treat boxes.",
+      "saving_tip": "Provide edible favors such as custom cookies that guests genuinely enjoy."
+    }
+  ],
+  "milestones": [
+    {
+      "id": "m_bday_theme",
+      "title": "Select Birthday Theme & Date",
+      "phase": "Concept & Date",
+      "lead_days": 60,
+      "priority": "high",
+      "depends_on": [],
+      "notes": "Align theme with honoree interests and confirm guest of honor availability."
+    },
+    {
+      "id": "m_bday_venue",
+      "title": "Reserve Party Space",
+      "phase": "Venue Booking",
+      "lead_days": 45,
+      "priority": "high",
+      "depends_on": ["m_bday_theme"],
+      "notes": "Verify rules on outside food and decor setup windows."
+    },
+    {
+      "id": "m_bday_entertain",
+      "title": "Book Entertainment & Order Custom Cake",
+      "phase": "Vendor Selection",
+      "lead_days": 30,
+      "priority": "medium",
+      "depends_on": ["m_bday_venue"],
+      "notes": "Confirm entertainer arrival time and cake flavor/design specifications."
+    },
+    {
+      "id": "m_bday_invites",
+      "title": "Send Invitations & Collect RSVPs",
+      "phase": "Invitations",
+      "lead_days": 21,
+      "priority": "high",
+      "depends_on": ["m_bday_venue"],
+      "notes": "Note dietary questions and RSVP deadline 7 days prior."
+    },
+    {
+      "id": "m_bday_decor",
+      "title": "Assemble Party Decor & Goodie Bags",
+      "phase": "Final Preparations",
+      "lead_days": 3,
+      "priority": "medium",
+      "depends_on": ["m_bday_invites"],
+      "notes": "Verify counts against confirmed RSVP list."
+    }
+  ],
+  "run_of_show": [
+    {
+      "time": "13:00",
+      "activity": "Host & Decorators Arrive for Setup",
+      "responsible": "Party Host",
+      "notes": "Inflate balloons, test music sound system, lay out tableware."
+    },
+    {
+      "time": "14:00",
+      "activity": "Guests Arrive, Welcome Drinks & Music",
+      "responsible": "Co-Host",
+      "notes": "Greet guests, collect gifts, invite to welcome snack bar."
+    },
+    {
+      "time": "14:45",
+      "activity": "Main Entertainment / Group Activity",
+      "responsible": "Entertainer / Host",
+      "notes": "Lead party games or performance session."
+    },
+    {
+      "time": "15:45",
+      "activity": "Birthday Cake Cutting & Candle Ceremony",
+      "responsible": "Party Host & Honoree",
+      "notes": "Gather all guests around the cake for photos."
+    },
+    {
+      "time": "16:15",
+      "activity": "Dessert, Open Socializing & Photo Booth",
+      "responsible": "Host",
+      "notes": "Distribute cake slices and encourage photo station visits."
+    },
+    {
+      "time": "17:00",
+      "activity": "Hand Out Favors & Guest Farewell",
+      "responsible": "Host",
+      "notes": "Hand personalized favor bags to departing guests."
+    }
+  ],
+  "vendor_categories": [
+    {
+      "id": "v_bday_venue",
+      "category": "Venue",
+      "title": "Party Venue / Event Space",
+      "budget_line": "Venue & Space Rental",
+      "milestone_id": "m_bday_venue",
+      "questions_to_ask": [
+        "How much setup and teardown buffer time is granted before and after the event?",
+        "Are open flame candles permitted on birthday cakes?",
+        "Is there on-site parking for families with children or strollers?"
+      ],
+      "documents_to_verify": [
+        "Rental permit and fee receipt",
+        "Venue rules sheet including cleanup responsibilities"
+      ],
+      "red_flags": [
+        "Unrealistic setup windows (less than 30 minutes for party prep)",
+        "Severe restrictions that prohibit cake candles or basic balloons"
+      ]
+    },
+    {
+      "id": "v_bday_entertainment",
+      "category": "Entertainment",
+      "title": "Party Performer or Game Facilitator",
+      "budget_line": "Entertainment & Activities",
+      "milestone_id": "m_bday_entertain",
+      "questions_to_ask": [
+        "What age range is your performance or activity program optimized for?",
+        "Do you supply your own sound equipment, microphones, and activity props?",
+        "How do you handle shy children or restless guests during the program?"
+      ],
+      "documents_to_verify": [
+        "Background check (for children's performers)",
+        "Performance contract specifying start/end times and gear requirements"
+      ],
+      "red_flags": [
+        "No verified references or video clips of recent performances",
+        "Refusal to commit to a written schedule"
+      ]
+    },
+    {
+      "id": "v_bday_bakery",
+      "category": "Bakery",
+      "title": "Custom Cake & Confectionery Baker",
+      "budget_line": "Food & Beverage",
+      "milestone_id": "m_bday_entertain",
+      "questions_to_ask": [
+        "Do you offer nut-free, gluten-free, or vegan cake tiers?",
+        "Do you deliver and assemble the cake directly at the venue?",
+        "What refrigeration is required before cutting?"
+      ],
+      "documents_to_verify": [
+        "Commercial kitchen hygiene inspection certificate",
+        "Design sketch or photo reference approval sign-off"
+      ],
+      "red_flags": [
+        "Unwillingness to separate allergen ingredients",
+        "Requires customer transport of complex multi-tier cakes without packaging"
+      ]
+    }
+  ]
+}
