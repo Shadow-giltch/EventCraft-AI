@@ -24,4 +24,26 @@ from eventcraft.main import create_app  # noqa: E402
 settings = AppSettings()
 
 # Expose 'app' as the module-level ASGI variable required by Vercel's Python runtime
-app = create_app(settings)
+from urllib.parse import parse_qsl, urlencode
+
+_inner_app = create_app(settings)
+
+
+async def app(scope, receive, send):
+    """Restore the original request path that Vercel's rewrite replaced."""
+    if scope["type"] == "http":
+        params = parse_qsl(scope.get("query_string", b"").decode(), keep_blank_values=True)
+        original = None
+        rest = []
+        for key, value in params:
+            if key == "__path" and original is None:
+                original = value
+            else:
+                rest.append((key, value))
+        if original is not None:
+            path = "/" + original.lstrip("/")
+            scope = dict(scope)
+            scope["path"] = path
+            scope["raw_path"] = path.encode()
+            scope["query_string"] = urlencode(rest).encode()
+    await _inner_app(scope, receive, send)
