@@ -4,7 +4,7 @@
 > "Create a GenAI-powered planning assistant that helps users organize weddings, birthdays, and community events with budgets, timelines, vendor checklists, and personalized ideas."
 
 [![CI Pipeline](https://github.com/example/eventcraft/actions/workflows/ci.yml/badge.svg)](https://github.com/example/eventcraft)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Python 3.14+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![WCAG 2.2 AA](https://img.shields.io/badge/Accessibility-WCAG%202.2%20AA-success.svg)](https://www.w3.org/WAI/standards-guidelines/wcag/)
 [![Coverage](https://img.shields.io/badge/Coverage-95.81%25-brightgreen.svg)](docs/TESTING.md)
